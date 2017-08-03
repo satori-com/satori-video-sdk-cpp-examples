@@ -8,3 +8,8 @@ conan_cmake_run(CONANFILE conanfile.txt
                 UPDATE
                 BUILD missing)
 
+add_executable(empty-bot main.cpp)
+set_property(TARGET empty-bot PROPERTY CXX_STANDARD 14)
+
+target_link_libraries(empty-bot PRIVATE
+        CONAN_PKG::SatoriVideo)
