@@ -2,9 +2,9 @@
 #include <iostream>
 
 namespace empty_bot {
-void process_image(bot_context &context, const uint8_t *image, uint16_t width,
-                   uint16_t height, uint16_t linesize) {
-  std::cout << "got frame " << width << "x" << height << "\n";
+void process_image(bot_context &context, const image_frame &frame) {
+  std::cout << "got frame " << context.frame_metadata->width << "x"
+            << context.frame_metadata->height << "\n";
 }
 cbor_item_t *process_command(bot_context &, cbor_item_t *) {
   std::cout << "bot is initializing, libraries are ok" << '\n';

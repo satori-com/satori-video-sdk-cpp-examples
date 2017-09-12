@@ -1,2 +1,0 @@
-[requires]
-SatoriVideo/0.1@satorivideo/master

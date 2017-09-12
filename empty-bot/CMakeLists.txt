@@ -3,10 +3,10 @@ project (empty-bot VERSION 0.1 LANGUAGES CXX)
 
 include(../conan.cmake)
 
-conan_cmake_run(CONANFILE conanfile.txt
+conan_cmake_run(REQUIRES SatoriVideo/[~0.2]@satorivideo/master
                 BASIC_SETUP CMAKE_TARGETS
                 UPDATE
-                BUILD missing)
+                BUILD outdated)
 
 add_executable(empty-bot main.cpp)
 set_property(TARGET empty-bot PROPERTY CXX_STANDARD 14)
