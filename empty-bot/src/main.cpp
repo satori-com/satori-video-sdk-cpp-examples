@@ -1,5 +1,5 @@
 #include <iostream>
-#include <librtmvideo/video_bot.h>
+#include <satorivideo/video_bot.h>
 
 namespace sv = satori::video;
 
