@@ -1,0 +1,11 @@
+[requires]
+SatoriVideo/[~0.9]@satorivideo/master
+
+[options]
+SatoriVideo:with_opencv=True
+
+[generators]
+cmake
+
+[imports]
+lib, *.so -> ./bin

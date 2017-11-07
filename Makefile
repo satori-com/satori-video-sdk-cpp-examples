@@ -1,4 +1,4 @@
-SUBDIRS := empty-bot
+SUBDIRS := empty-bot empty-opencv-bot
 
 .RECIPEPREFIX = >
 
