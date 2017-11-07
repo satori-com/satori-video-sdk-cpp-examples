@@ -6,6 +6,9 @@ This bot is using InceptionV3 model and shows the example on how to run basic TF
 Satori Video SDK. It depends on `Tensorflow` conan packet which should be available from
 the same repository with `SatoriVideo`.
 
+As you need to be able to build Tensorflow from sources, you need to have `bazel`
+additionally to SDK requirements. Please refer to [Tensorflow installation page](https://www.tensorflow.org/install/install_sources) for more information.
+
 To run this bot, you need to download and extract TF graph for InceptionV3, please refer to [this guide](https://www.tensorflow.org/tutorials/image_recognition).
 
 Default configuration expects a file named `inception_v3_2016_08_28_frozen.pb` in working directory.
