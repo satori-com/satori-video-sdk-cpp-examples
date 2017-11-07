@@ -58,7 +58,7 @@ cbor_item_t *process_command(sv::bot_context &ctx, cbor_item_t *config) {
         tf::ReadBinaryProto(tf::Env::Default(), graph_path, &graph_def);
     if (!load_graph_status.ok()) {
       std::cerr << "Failed to load graph at '" << graph_path << "'"
-                << load_graph_status;
+                << load_graph_status << "\n";
       exit(1);
     }
     tf::Status create_status = s->session->Create(graph_def);
