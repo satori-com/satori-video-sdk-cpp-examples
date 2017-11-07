@@ -2,7 +2,7 @@
 
 - Building: `mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make -j8`
 
-This bot is using InceptionV3 model and shows the example how to run basic TF code with
+This bot is using InceptionV3 model and shows the example on how to run basic TF code with
 Satori Video SDK.
 
 To run this bot, you need to download and extract TF graph for InceptionV3, please refer to [this guide](https://www.tensorflow.org/tutorials/image_recognition).
