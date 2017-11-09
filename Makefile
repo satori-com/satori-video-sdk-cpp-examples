@@ -1,4 +1,4 @@
-SUBDIRS := empty-bot empty-opencv-bot empty-tensorflow-bot
+SUBDIRS := empty-bot empty-opencv-bot empty-tensorflow-bot haar-cascades-bot
 
 .RECIPEPREFIX = >
 
