@@ -1,0 +1,1 @@
+FROM gcr.io/kubernetes-live/video/cmake-bot-builder
