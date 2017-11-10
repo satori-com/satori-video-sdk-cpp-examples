@@ -9,4 +9,4 @@ DOCKER_TAG=satori-video-sdk-cpp-examples
 all: $(SUBDIRS)
 
 $(SUBDIRS):
-> docker build -t ${DOCKER_TAG}-$@ $@
+> docker build -t ${DOCKER_TAG}-$@-build $@
