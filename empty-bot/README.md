@@ -1,4 +1,4 @@
-## Empty bot
+# Empty Video Bot
 
 This is a skeleton-bot.
 
