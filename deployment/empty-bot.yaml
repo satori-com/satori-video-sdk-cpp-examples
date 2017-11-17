@@ -33,21 +33,3 @@ spec:
         ports:
         - name: http-metrics
           containerPort: <port-for-metrics>
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    monitor: prometheus
-    app: empty-bot
-  name: empty-bot-metrics
-spec:
-  type: ClusterIP
-  clusterIP: None
-  ports:
-  - name: http-metrics
-    port: 9090
-    targetPort: http-metrics
-    protocol: TCP
-  selector:
-    app: empty-bot
