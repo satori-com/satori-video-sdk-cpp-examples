@@ -1,18 +1,17 @@
-.RECIPEPREFIX = >
-.PHONY: image/in/haar-cascades-bot.tgz
+DOCKER_BUILD_OPTIONS?=--pull
+DOCKER_TAG?=latest
 
-BUILDING_IMAGE_NAME = haar-cascades-bot-building
-IMAGE_NAME = haar-cascades-bot
+DOCKER_IMAGE=gcr.io/kubernetes-live/video/motion-detector-bot
+.RECIPEPREFIX = >
+.PHONY: all image test push
 
 all: image
 
-building-image:
-> docker build -t ${BUILDING_IMAGE_NAME} .
+image:
+> docker build $(DOCKER_BUILD_OPTIONS) \
+	--build-arg CMAKE_TIDY="/usr/bin/clang-tidy-5.0" -t $(DOCKER_IMAGE) .
 
-image/in/haar-cascades-bot.tgz: building-image
-> rm -rf image/in
-> mkdir image/in
-> docker run --rm ${BUILDING_IMAGE_NAME} bash -c "cd /build/bin/ && tar -czhf - haar-cascades-bot" > $@
-
-image: image/in/haar-cascades-bot.tgz
-> docker build --no-cache=true -t ${IMAGE_NAME} image/
+push: image
+> docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE):$(DOCKER_TAG)
+> docker push $(DOCKER_IMAGE)
+> docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
