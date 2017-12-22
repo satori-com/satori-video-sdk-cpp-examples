@@ -1,5 +1,5 @@
 [requires]
-SatoriVideo/[~0.10]@satorivideo/master
+SatoriVideo/[~0.11]@satorivideo/master
 
 [options]
 SatoriVideo:with_opencv=False
