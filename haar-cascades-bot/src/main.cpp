@@ -28,8 +28,8 @@ cbor_item_t *build_object(const cv::Rect &detection, uint32_t id,
   cbor_map_add(object,
                {cbor_move(cbor_build_string("id")), cbor_move(cbor_build_uint32(id))});
   cbor_map_add(object, {cbor_move(cbor_build_string("rect")),
-                        cbor_move(sv::opencv::rect_to_cbor(
-                            sv::opencv::convert_to_fractional(detection, image_size)))});
+                        cbor_move(sv::opencv::to_cbor(
+                            sv::opencv::to_fractional(detection, image_size)))});
   cbor_map_add(object, {cbor_move(cbor_build_string("tag")),
                         cbor_move(cbor_build_string(tag.c_str()))});
 
