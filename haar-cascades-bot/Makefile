@@ -1,7 +1,7 @@
 DOCKER_BUILD_OPTIONS?=--pull
 DOCKER_TAG?=latest
 
-DOCKER_IMAGE=gcr.io/kubernetes-live/video/motion-detector-bot
+DOCKER_IMAGE=gcr.io/kubernetes-live/video/haar-cascades-bot
 .RECIPEPREFIX = >
 .PHONY: all image test push
 
