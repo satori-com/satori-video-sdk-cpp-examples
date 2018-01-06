@@ -8,14 +8,12 @@ spec:
     metadata:
       labels:
         app: empty-bot
-        has-metrics: "true"
     spec:
       hostNetwork: true
       containers:
       - name: empty-bot
         image: gcr.io/kubernetes-live/video/empty-bot:latest
         args: [
-          "-v", "2",
           "--id", "empty-bot",
           "--input-resolution", "640x480",
           "--appkey", "<satori-application-key>",
@@ -25,10 +23,7 @@ spec:
         resources:
           requests:
             memory: 128Mi
-            cpu: .5
+            cpu: .25
           limits:
             memory: 128Mi
-            cpu: .5
-        ports:
-        - name: http-metrics
-          containerPort: <port-for-metrics>
+            cpu: .25
