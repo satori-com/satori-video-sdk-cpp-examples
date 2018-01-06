@@ -1,7 +1,7 @@
 DOCKER_BUILD_OPTIONS?=--pull
 DOCKER_TAG?=latest
 
-DOCKER_IMAGE=gcr.io/kubernetes-live/video/empty-bot
+DOCKER_IMAGE=gcr.io/kubernetes-live/video/empty-opencv-bot
 .RECIPEPREFIX = >
 .PHONY: all image test push
 
