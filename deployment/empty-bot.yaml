@@ -9,7 +9,6 @@ spec:
       labels:
         app: empty-bot
     spec:
-      hostNetwork: true
       containers:
       - name: empty-bot
         image: gcr.io/kubernetes-live/video/empty-bot:latest
