@@ -1,5 +1,5 @@
-#include <iostream>
 #include <satorivideo/video_bot.h>
+#include <iostream>
 
 namespace sv = satori::video;
 
@@ -10,12 +10,12 @@ void process_image(sv::bot_context &context, const sv::image_frame &frame) {
             << context.frame_metadata->height << "\n";
 }
 
-cbor_item_t *process_command(sv::bot_context &, cbor_item_t *) {
+nlohmann::json process_command(sv::bot_context &, const nlohmann::json &) {
   std::cout << "bot is initializing, libraries are ok" << '\n';
   return nullptr;
 }
 
-} // namespace empty_bot
+}  // namespace empty_bot
 
 int main(int argc, char *argv[]) {
   sv::bot_register(sv::bot_descriptor{sv::image_pixel_format::BGR,
