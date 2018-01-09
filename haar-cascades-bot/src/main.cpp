@@ -114,6 +114,6 @@ nlohmann::json process_command(sv::bot_context &context, const nlohmann::json &c
 
 int main(int argc, char *argv[]) {
   sv::opencv_bot_register(
-      {&objectcounting::process_image, &objectcounting::process_command});
+      {&haar_cascades_bot::process_image, &haar_cascades_bot::process_command});
   return sv::opencv_bot_main(argc, argv);
 }
