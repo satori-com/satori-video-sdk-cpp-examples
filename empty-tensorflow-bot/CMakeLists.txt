@@ -24,3 +24,13 @@ set_property(TARGET empty-tensorflow-bot PROPERTY CXX_STANDARD 14)
 target_link_libraries(empty-tensorflow-bot PRIVATE
         CONAN_PKG::Tensorflow
         CONAN_PKG::SatoriVideo)
+
+if("${INCEPTION_V3_MODEL_NAME}" STREQUAL "")
+  SET(INCEPTION_V3_MODEL_NAME "inception_v3_2016_08_28_frozen.pb.tar.gz")
+ENDIF()
+
+if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/models/${INCEPTION_V3_MODEL_NAME}")
+  message(STATUS "Downloading Tensorflow InceptionV3 model")
+  file(DOWNLOAD "https://storage.googleapis.com/download.tensorflow.org/models/${INCEPTION_V3_MODEL_NAME}"
+          "${CMAKE_CURRENT_BINARY_DIR}/models/${INCEPTION_V3_MODEL_NAME}")
+endif()

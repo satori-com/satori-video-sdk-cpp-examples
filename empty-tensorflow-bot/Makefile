@@ -14,7 +14,7 @@ image:
 
 test:
 > docker run -v `cd $(TEST_VIDEO_PATH);pwd`:/test/ -i $(DOCKER_IMAGE) \
-	--input-video-file=/test/test.mp4
+	--input-resolution=299x299 --keep-proportion=0 --input-video-file=/test/test.mp4
 
 push: image
 > docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE):$(DOCKER_TAG)
