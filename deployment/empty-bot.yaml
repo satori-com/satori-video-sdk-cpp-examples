@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: empty-bot
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: empty-bot
+    spec:
+      containers:
+      - name: empty-bot
+        image: gcr.io/kubernetes-live/video/empty-bot:latest
+        args: [
+          "--id", "empty-bot",
+          "--input-resolution", "640x480",
+          "--appkey", "<satori-application-key>",
+          "--endpoint", "<satori-endpoint>",
+          "--channel", "<satori-video-channel>"
+          ]
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: .25
+          limits:
+            memory: 128Mi
+            cpu: .25
