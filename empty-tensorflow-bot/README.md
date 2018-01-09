@@ -14,7 +14,7 @@ To run this bot, you need to download and extract TF graph for InceptionV3, plea
 Default configuration expects a file named `inception_v3_2016_08_28_frozen.pb` in working directory.
 
 Once you have bot binary and the model, run it with the resolution `299x299`, because
-standard model accepts only these dimensions. Command line arguments: `--input-resolution=299x299 --keep-proportion=0`.
+standard model accepts only these dimensions. Command line arguments: `--input-resolution=299x299 --keep-proportions=0`.
 
 You should see "image_tensor size = 4004" in bot's output.
 
