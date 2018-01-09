@@ -2,7 +2,7 @@ DOCKER_BUILD_OPTIONS?=--pull
 DOCKER_TAG?=latest
 TEST_VIDEO_PATH?=../../satori-video-sdk-cpp/test_data
 
-DOCKER_IMAGE=gcr.io/kubernetes-live/video/haar-cascades-bot
+DOCKER_IMAGE=gcr.io/kubernetes-live/video/haar-tracking-bot
 .RECIPEPREFIX = >
 .PHONY: all image test push
 
