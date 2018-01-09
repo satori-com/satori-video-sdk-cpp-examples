@@ -55,7 +55,7 @@ void process_image(sv::bot_context &context, const cv::Mat &image) {
     }
   }
 
-  if (objects.size() == 0) {
+  if (objects.empty()) {
     return;
   }
 

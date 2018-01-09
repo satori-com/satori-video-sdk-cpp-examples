@@ -32,7 +32,7 @@ tf::Tensor mat_to_tensor(const cv::Mat &frame) {
 }
 
 void process_image(sv::bot_context &context, const cv::Mat &frame) {
-  state *s = (state *)context.instance_data;
+  auto *s = (state *)context.instance_data;
   tf::Tensor image_tensor = mat_to_tensor(frame);
   // use image_tensor
   std::vector<tf::Tensor> outputs;

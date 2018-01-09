@@ -5,11 +5,12 @@ namespace sv = satori::video;
 
 namespace empty_opencv_bot {
 
-void process_image(sv::bot_context &context, const cv::Mat &frame) {
+void process_image(sv::bot_context & /*context*/, const cv::Mat &frame) {
   std::cout << "got frame " << frame.size << "\n";
 }
 
-nlohmann::json process_command(sv::bot_context &, const nlohmann::json &) {
+nlohmann::json process_command(sv::bot_context & /*context*/,
+                               const nlohmann::json & /*command*/) {
   std::cout << "bot is initializing, libraries are ok" << '\n';
   return nullptr;
 }
