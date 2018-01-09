@@ -57,7 +57,7 @@ nlohmann::json process_command(sv::bot_context &ctx, const nlohmann::json &confi
     auto &body = config["body"];
     CHECK_S(body.is_object()) << "body is not an object: " << body;
 
-    state *s = new state;
+    auto *s = new state;
     tf::GraphDef graph_def;
     s->session.reset(tf::NewSession(tf::SessionOptions()));
 

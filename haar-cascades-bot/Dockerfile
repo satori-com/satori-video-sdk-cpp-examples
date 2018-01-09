@@ -6,5 +6,7 @@ FROM ubuntu:rolling
 
 RUN mkdir -p /app
 COPY --from=builder /build/bin/* /app/
+COPY --from=builder /build/models/* /app/models/
+WORKDIR /app
 
 ENTRYPOINT ["/app/haar-cascades-bot"]
