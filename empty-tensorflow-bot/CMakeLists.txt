@@ -25,8 +25,12 @@ target_link_libraries(empty-tensorflow-bot PRIVATE
         CONAN_PKG::Tensorflow
         CONAN_PKG::SatoriVideo)
 
-if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/models/inception_v3_2016_08_28_frozen.pb.tar.gz")
+if("${INCEPTIONV3_MODEL_NAME}" STREQUAL "")
+  SET(INCEPTIONV3_MODEL_NAME "inception_v3_2016_08_28_frozen.pb.tar.gz")
+ENDIF()
+
+if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/models/${INCEPTIONV3_MODEL_NAME}")
   message(STATUS "Downloading Tensorflow InceptionV3 model")
-  file(DOWNLOAD "https://storage.googleapis.com/download.tensorflow.org/models/inception_v3_2016_08_28_frozen.pb.tar.gz"
-          "${CMAKE_CURRENT_BINARY_DIR}/models/inception_v3_2016_08_28_frozen.pb.tar.gz")
+  file(DOWNLOAD "https://storage.googleapis.com/download.tensorflow.org/models/${INCEPTIONV3_MODEL_NAME}"
+          "${CMAKE_CURRENT_BINARY_DIR}/models/${INCEPTIONV3_MODEL_NAME}")
 endif()
