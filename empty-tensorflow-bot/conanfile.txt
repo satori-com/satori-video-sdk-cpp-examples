@@ -1,5 +1,5 @@
 [requires]
-SatoriVideo/[~0.13]@satorivideo/master
+SatoriVideo/[~0.14]@satorivideo/master
 Tensorflow/1.4.0-rc0@satorivideo/master
 
 [options]
