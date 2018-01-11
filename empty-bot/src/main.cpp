@@ -5,12 +5,13 @@ namespace sv = satori::video;
 
 namespace empty_bot {
 
-void process_image(sv::bot_context &context, const sv::image_frame &frame) {
+void process_image(sv::bot_context &context, const sv::image_frame & /*frame*/) {
   std::cout << "got frame " << context.frame_metadata->width << "x"
             << context.frame_metadata->height << "\n";
 }
 
-nlohmann::json process_command(sv::bot_context &, const nlohmann::json &) {
+nlohmann::json process_command(sv::bot_context & /*context*/,
+                               const nlohmann::json & /*command*/) {
   std::cout << "bot is initializing, libraries are ok" << '\n';
   return nullptr;
 }
