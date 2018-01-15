@@ -32,7 +32,7 @@ make -j8
 make
 
 # Running docker image (processing Satori video stream)
-docker run --rm -ti haar-cascades-bot --id sample-haar-cascades-bot --endpoint <satori-endpoint> --appkey <satori-appkey> --channel <satori-channel> --config "{\"frontalface_default.xml\": \"a face\", \"smile.xml\": \"a smile\"}"
+docker run --rm -ti haar-cascades-bot --id sample-haar-cascades-bot --endpoint <satori-endpoint> --appkey <satori-appkey> --input-channel <satori-channel> --config "{\"frontalface_default.xml\": \"a face\", \"smile.xml\": \"a smile\"}"
 ```
 
 ## Sample bot output
