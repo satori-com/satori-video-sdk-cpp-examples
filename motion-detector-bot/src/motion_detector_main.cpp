@@ -103,9 +103,9 @@ namespace {
           * Copies the feature size from the message to the local variable.
           */
           if (params.find("featureSize") != params.end()) {
-            auto &featureSize_value = params["featureSize"];
-            if (featureSize_value.is_number_integer()) {
-              this->feature_size_value = featureSize_value;
+            auto &feature_size_value = params["featureSize"];
+            if (feature_size_value.is_number_integer()) {
+              this->feature_size_value = feature_size_value;
             }
           }
         }
@@ -336,3 +336,4 @@ int main(int argc, char *argv[]) {
   // Starts the main processing loop
   return sv::opencv_bot_main(argc, argv);
 }
+
