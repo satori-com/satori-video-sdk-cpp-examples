@@ -275,6 +275,12 @@ namespace {
         return nullptr;
     }
     
+    if (command_message.find("params") == command_message.end()) {
+        // Control reaches here if the "params" key isn't found and the message isn't an "ack"
+        LOG_S(ERROR) << "Control message doesn't contain params key." << command_message;
+        return nullptr;
+    }
+
     /*
     * Command message isn't an ack, so it must contain new or updated configuration parameters.
     * Sets the parameters in the bot context
@@ -282,44 +288,37 @@ namespace {
     * JSON child object for the configuration parameters, rather than making each parameter a child of the command
     * message itself.
     */
-    if (command_message.find("params") != command_message.end()) {
-      // Gets the configuration parameters from the message
-      auto &params = command_message["params"];
-      LOG_S(INFO) << "process_command: Received config parameters: " << command_message;
-      // Moves the parameters to the context
-      s->params.merge_json(params);
-      // Gets the bot id from the command_message
-      std::string bot_id = command_message["to"];
-      /*
-      * Returns an acknowledgement ("ack") message to the SDK, which publishes it back to the control channel.
-      * The ack is JSON that contains:
-      * {"ack": true, "to": "<bot_id>", "<params_key>": <params_value>}
-      * - <bot_id>: Value of --id parameter on bot command line
-      * - <params_key>: Top-level key for the configuration parameters.
-      * - <params_value>: Configuration parameters object
-      *
-      * **Note:** Always include the "to" field in the ack. If you don't, the SDK issues
-      * "unsupported kind of message:" errors because it expects all control messages to have a "to" field.
-      */
-      // Creates the ack field
-      nlohmann::json return_object = {{"ack", true}};
-      // Inserts the bot id field
-      nlohmann::json to_object = {{"to", bot_id}};
-      return_object.insert(to_object.begin(), to_object.end());
+    // Gets the configuration parameters from the message
+    auto &params = command_message["params"];
+    LOG_S(INFO) << "process_command: Received config parameters: " << command_message;
+    // Moves the parameters to the context
+    s->params.merge_json(params);
+    // Gets the bot id from the command_message
+    std::string bot_id = command_message["to"];
+    /*
+    * Returns an acknowledgement ("ack") message to the SDK, which publishes it back to the control channel.
+    * The ack is JSON that contains:
+    * {"ack": true, "to": "<bot_id>", "<params_key>": <params_value>}
+    * - <bot_id>: Value of --id parameter on bot command line
+    * - <params_key>: Top-level key for the configuration parameters.
+    * - <params_value>: Configuration parameters object
+    *
+    * **Note:** Always include the "to" field in the ack. If you don't, the SDK issues
+    * "unsupported kind of message:" errors because it expects all control messages to have a "to" field.
+    */
+    // Creates the ack field
+    nlohmann::json return_object = {{"ack", true}};
+    // Inserts the bot id field
+    nlohmann::json to_object = {{"to", bot_id}};
+    return_object.insert(to_object.begin(), to_object.end());
 
-      // Inserts the received configuration parameters object field
-      nlohmann::json config_object = s->params.to_json();
-      return_object.insert(config_object.begin(), config_object.end());
+    // Inserts the received configuration parameters object field
+    nlohmann::json config_object = s->params.to_json();
+    return_object.insert(config_object.begin(), config_object.end());
 
-      LOG_S(INFO) << "Return ack message: " << return_object.dump();
-      // Returns the ack
-      return return_object;
-    
-    } else {
-        // Control reaches here if the "params" key isn't found and the message isn't an "ack"
-        LOG_S(ERROR) << "Control message doesn't contain params key." << command_message;
-        return nullptr;
-    }
+    LOG_S(INFO) << "Return ack message: " << return_object.dump();
+    // Returns the ack
+    return return_object;
   }
 } // end motion_detector_bot namespace
 /*
